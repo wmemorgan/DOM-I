@@ -37,6 +37,36 @@ const siteContent = {
   },
 };
 
+//Header
+let nav = document.querySelector('nav')
+let navMenuLinks = document.querySelectorAll('nav a')
+// navMenuLinks[0].textContent = 'Services'
+
+
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"])
+
+//CTA section
+let cta = document.querySelector('.cta')
+let ctaText = document.querySelector('.cta-text')
+let ctaH1 = document.querySelector('.cta-text h1')
+let button = document.querySelector('button')
+let ctaImage = document.getElementById('cta-img')
+
+//Main Content section
+let mainContent = document.querySelector('.main-content')
+let topContent = document.querySelector('.top-content')
+let contentText = document.querySelectorAll('.text-content')
+let middleImage = document.getElementById('middle-img')
+let bottomContent = document.querySelector('.bottom-content')
+
+//Contact section
+let contact = document.querySelector('.contact')
+let contactH4 = document.querySelector('.contact h4')
+let contactParagraph = document.querySelectorAll('.contact p')
+
+//Footer
+let footer = document.getElementsByTagName('footer')
+let footerParagraph = document.querySelector('footer p')
+
