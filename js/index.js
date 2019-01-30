@@ -40,8 +40,6 @@ const siteContent = {
 //Header
 let nav = document.querySelector('nav')
 let navMenuLinks = document.querySelectorAll('nav a')
-// navMenuLinks[0].textContent = 'Services'
-
 
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
