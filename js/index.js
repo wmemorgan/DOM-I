@@ -38,8 +38,8 @@ const siteContent = {
 };
 
 //Header
-let nav = document.querySelector('nav')
-let navMenuLinks = document.querySelectorAll('nav a')
+const nav = document.querySelector('nav')
+const navMenuLinks = document.querySelectorAll('nav a')
 
 //Version 1 - for loop
 // for (let i = 0; i < Array.from(navMenuLinks).length; i++) {
@@ -71,18 +71,13 @@ let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"])
 
 //CTA section
-let cta = document.querySelector('.cta')
+const cta = document.querySelector('.cta')
 let ctaText = document.querySelector('.cta-text')
 let ctaH1 = document.querySelector('.cta-text h1')
 ctaH1.textContent = siteContent.cta.h1
 
 let button = document.querySelector('button')
 button.textContent = siteContent.cta.button
-
-//Stretch Goal - change text on button click
-button.addEventListener('click', () => {
-  ctaH1.textContent = siteContent.cta.button
-})
 
 let ctaImage = document.getElementById('cta-img')
 ctaImage.src = siteContent.cta["img-src"]
@@ -124,3 +119,31 @@ contactParagraph[2].textContent = siteContent.contact['email']
 let footer = document.getElementsByTagName('footer')
 let footerContent = document.querySelector('footer p')
 footerContent.textContent = siteContent.footer.copyright
+
+//Stretch Goal - Change style
+const changeColorScheme = (darkColor, lightColor, fontColor, accentColor) => {
+  document.querySelectorAll('h4').forEach(item => item.style.color = lightColor)
+  document.querySelector('header').style.backgroundColor = darkColor
+  document.querySelectorAll('nav a').forEach(item => item.style.color = fontColor)
+  ctaH1.style.color = fontColor
+  cta.style.backgroundColor = lightColor
+  button.style.color = fontColor
+  button.style.backgroundColor = accentColor
+}
+
+const changeLayout = (direction, align, margin, padding, display='none', borderRadius='25px') => {
+  document.querySelector('header').style.paddingBottom = padding
+  document.querySelector('header').style.flexDirection = direction
+  document.querySelector('header').style.alignItems = align
+  logo.style.display = display
+  cta.style.margin = margin
+  cta.style.padding = padding
+  button.style.borderRadius = borderRadius
+}
+
+//Stretch Goal - change text on button click
+button.addEventListener('click', () => {
+  ctaH1.textContent = siteContent.cta.button
+  changeColorScheme('#022140', '#265077', '#FFFFFF', '#51a7f8')
+  changeLayout('column', 'center', 0, '20px')
+})
