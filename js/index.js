@@ -40,6 +40,15 @@ const siteContent = {
 //Header
 let nav = document.querySelector('nav')
 let navMenuLinks = document.querySelectorAll('nav a')
+//Version 1 - for loop
+// for (let i = 0; i < Array.from(navMenuLinks).length; i++) {
+//   Array.from(navMenuLinks)[i].textContent = Object.values(siteContent.nav)[i]
+// }
+
+//Version 2 - forEach() method
+Array.from(navMenuLinks).forEach((link, index) => {
+  link.text = Object.values(siteContent.nav)[index]
+})
 
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
@@ -49,22 +58,48 @@ logo.setAttribute('src', siteContent["nav"]["img-src"])
 let cta = document.querySelector('.cta')
 let ctaText = document.querySelector('.cta-text')
 let ctaH1 = document.querySelector('.cta-text h1')
+ctaH1.textContent = siteContent.cta.h1
+
 let button = document.querySelector('button')
+button.textContent = siteContent.cta.button
+
 let ctaImage = document.getElementById('cta-img')
+ctaImage.src = siteContent.cta["img-src"]
 
 //Main Content section
-let mainContent = document.querySelector('.main-content')
-let topContent = document.querySelector('.top-content')
-let contentText = document.querySelectorAll('.text-content')
+//Content mapping functions
+const dynamicContent = (content, criteria) => Object.entries(content)
+  .filter(item => item[0].includes(criteria))
+  .map(item => item[1])
+//console.log(dynamicContent(siteContent['main-content'], 'h4'))
+
+const addContent = (elem, content, criteria, cb) => {
+  Array.from(elem).forEach((item, index) => {
+    item.textContent = cb(content, criteria)[index]
+  })
+}
+
+let contentHeading = document.querySelectorAll('.text-content h4')
+addContent(contentHeading, siteContent['main-content'], 'h4', dynamicContent)
+
+let contentParagraph = document.querySelectorAll('.text-content p')
+addContent(contentParagraph, siteContent['main-content'], 'content', dynamicContent)
+
 let middleImage = document.getElementById('middle-img')
-let bottomContent = document.querySelector('.bottom-content')
+middleImage.src = siteContent['main-content']['middle-img-src']
+
 
 //Contact section
-let contact = document.querySelector('.contact')
-let contactH4 = document.querySelector('.contact h4')
+let contactHeading = document.querySelector('.contact h4')
+contactHeading.textContent = siteContent.contact['contact-h4']
 let contactParagraph = document.querySelectorAll('.contact p')
+
+contactParagraph[0].textContent = siteContent.contact['address']
+contactParagraph[1].textContent = siteContent.contact['phone']
+contactParagraph[2].textContent = siteContent.contact['email']
+
 
 //Footer
 let footer = document.getElementsByTagName('footer')
-let footerParagraph = document.querySelector('footer p')
-
+let footerContent = document.querySelector('footer p')
+footerContent.textContent = siteContent.footer.copyright
