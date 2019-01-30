@@ -121,21 +121,23 @@ let footerContent = document.querySelector('footer p')
 footerContent.textContent = siteContent.footer.copyright
 
 //Stretch Goal - Change style
-const changeColorScheme = (darkColor, lightColor, fontColor, accentColor) => {
-  document.querySelectorAll('h4').forEach(item => item.style.color = lightColor)
+const changeColorScheme = (darkColor, lightColor, lightFontColor, darkFontColor, accentColor) => {
+  document.querySelector('.container').style.backgroundColor = lightColor
+  document.querySelectorAll('h1, h4').forEach(item => item.style.color = lightFontColor)
+  document.querySelectorAll('p').forEach(item => item.style.color = darkFontColor)
   document.querySelector('header').style.backgroundColor = darkColor
-  document.querySelectorAll('nav a').forEach(item => item.style.color = fontColor)
-  ctaH1.style.color = fontColor
-  cta.style.backgroundColor = lightColor
-  button.style.color = fontColor
+  document.querySelectorAll('nav a').forEach(item => item.style.color = lightFontColor)
+  button.style.color = lightFontColor
   button.style.backgroundColor = accentColor
 }
 
 const changeLayout = (direction, align, margin, padding, display='none', borderRadius='25px') => {
+  document.querySelector('.container').style.padding = padding
   document.querySelector('header').style.paddingBottom = padding
   document.querySelector('header').style.flexDirection = direction
   document.querySelector('header').style.alignItems = align
   logo.style.display = display
+  document.querySelector('#middle-img').style.width = '100%'
   cta.style.margin = margin
   cta.style.padding = padding
   button.style.borderRadius = borderRadius
@@ -144,6 +146,6 @@ const changeLayout = (direction, align, margin, padding, display='none', borderR
 //Stretch Goal - change text on button click
 button.addEventListener('click', () => {
   ctaH1.textContent = siteContent.cta.button
-  changeColorScheme('#022140', '#265077', '#FFFFFF', '#51a7f8')
+  changeColorScheme('#022140', '#265077', '#FFFFFF', '#212121', '#51a7f8')
   changeLayout('column', 'center', 0, '20px')
 })
