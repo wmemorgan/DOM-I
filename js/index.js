@@ -40,6 +40,7 @@ const siteContent = {
 //Header
 let nav = document.querySelector('nav')
 let navMenuLinks = document.querySelectorAll('nav a')
+
 //Version 1 - for loop
 // for (let i = 0; i < Array.from(navMenuLinks).length; i++) {
 //   Array.from(navMenuLinks)[i].textContent = Object.values(siteContent.nav)[i]
@@ -47,9 +48,23 @@ let navMenuLinks = document.querySelectorAll('nav a')
 
 //Version 2 - forEach() method
 Array.from(navMenuLinks).forEach((link, index) => {
-  link.text = Object.values(siteContent.nav)[index]
-  link.style.color = 'green' //Task 4a: change text color to green 
+  link.textContent = Object.values(siteContent.nav)[index]
 })
+
+//Task 4b: Utilize .appendChild() and .prepend() to add two new items to the navigation system
+const homeLink = document.createElement('a')
+homeLink.textContent = 'Home'
+document.querySelector('nav').prepend(homeLink)
+
+const loginLink = document.createElement('a')
+loginLink.textContent = 'Login'
+document.querySelector('nav').append(loginLink)
+
+//Task 4a: change text color to green 
+Array.from(document.querySelectorAll('nav a')).forEach(link => {
+  link.style.color = 'green'
+})
+
 
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
