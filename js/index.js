@@ -48,6 +48,7 @@ let navMenuLinks = document.querySelectorAll('nav a')
 //Version 2 - forEach() method
 Array.from(navMenuLinks).forEach((link, index) => {
   link.text = Object.values(siteContent.nav)[index]
+  link.style.color = 'green' //Task 4a: change text color to green 
 })
 
 // Example: Update the img src for the logo
