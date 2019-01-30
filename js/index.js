@@ -79,6 +79,11 @@ ctaH1.textContent = siteContent.cta.h1
 let button = document.querySelector('button')
 button.textContent = siteContent.cta.button
 
+//Stretch Goal - change text on button click
+button.addEventListener('click', () => {
+  ctaH1.textContent = siteContent.cta.button
+})
+
 let ctaImage = document.getElementById('cta-img')
 ctaImage.src = siteContent.cta["img-src"]
 
