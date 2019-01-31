@@ -74,7 +74,8 @@ logo.setAttribute('src', siteContent["nav"]["img-src"])
 const cta = document.querySelector('.cta')
 let ctaText = document.querySelector('.cta-text')
 let ctaH1 = document.querySelector('.cta-text h1')
-ctaH1.textContent = siteContent.cta.h1
+let headline = siteContent.cta.h1
+ctaH1.innerHTML = `${siteContent.cta.h1.replace(/\s/g, `<br>`)}`
 
 let button = document.querySelector('button')
 button.textContent = siteContent.cta.button
