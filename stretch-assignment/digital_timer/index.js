@@ -1,6 +1,6 @@
 let intervalID 
 
-function countDown (timeLimit) {
+function timer(timeLimit) {
   let counter = 0
   intervalID = setInterval(() => {
     console.log(counter)
@@ -17,4 +17,4 @@ function countDown (timeLimit) {
   }, 10);
 }
 
-countDown(1000)
+timer(1000)
