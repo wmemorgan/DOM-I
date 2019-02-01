@@ -1,7 +1,8 @@
 let intervalID 
 
-function timer(timeLimit) {
+const timer = (timeLimit) => {
   document.querySelector('.digits').style.color = 'initial'
+  startButton.removeEventListener('click', startTimer)
   let counter = 0
   intervalID = setInterval(() => {
     counter++
@@ -12,6 +13,7 @@ function timer(timeLimit) {
 
     if (counter === timeLimit) {
       document.querySelector('.digits').style.color = 'red'
+      startButton.addEventListener('click', startTimer)
       clearInterval(intervalID)
     }
   }, 10);
@@ -31,4 +33,10 @@ startButton.setAttribute(
 )
 startButton.textContent = 'Start'
 document.querySelector('.digits').append(startButton)
-startButton.addEventListener('click', () => timer(1000))
+
+const startTimer = () => {
+  timer(1000)
+}
+
+startButton.addEventListener('click', startTimer)
+
